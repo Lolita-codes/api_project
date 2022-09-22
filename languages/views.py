@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Language
-from .serializers import LanguageSerializer
+from .models import Language, Paradigm, Programmer
+from .serializers import LanguageSerializer, ProgrammerSerializer, ParadigmSerializer
+
+
+class ParadigmView(viewsets.ModelViewSet):
+    queryset = Paradigm.objects.all()
+    serializer_class = ParadigmSerializer
 
 
 class LanguageView(viewsets.ModelViewSet):
@@ -9,3 +14,6 @@ class LanguageView(viewsets.ModelViewSet):
     serializer_class = LanguageSerializer
 
 
+class ProgrammerView(viewsets.ModelViewSet):
+    queryset = Programmer.objects.all()
+    serializer_class = ProgrammerSerializer
